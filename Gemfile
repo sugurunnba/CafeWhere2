@@ -89,9 +89,9 @@ gem 'bootstrap', '~> 4.5'
 gem 'geocoder'
 
 # 本番環境の作成
-group :production do
-  gem 'mysql2'
-end
+# group :production do
+#   gem 'mysql2'
+# end
 
 # fontawesome適用のため記載
 gem 'font-awesome-sass', '~> 5.8.1'
