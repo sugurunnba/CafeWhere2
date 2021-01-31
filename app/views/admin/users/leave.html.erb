@@ -1,16 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-offset-1 col-md-10">
       <table border="1">
         <thead>
           <tr>
-            <h3 class="text-center">ユーザー一覧</h3>
+            <h3 class="text-center">退会済みユーザー一覧</h3>
           </tr>
 <br>
           <tr>
-            <%= link_to leave_admin_users_path do %>
-              退会済みユーザー一覧へ
-            <% end %>
+            <i class="fa fa-history"></i><%= link_to "戻る", admin_users_path %>
           </tr>
           <tr>
             <td>ユーザーID</td>
@@ -18,7 +16,7 @@
           </tr>
         </thead>
         <% @users.each do |user| %>
-          <% if user.user_status == false %>
+          <% if user.user_status == true %>
           <tbody>
             <tr>
               <td><%= user.id %></td>
@@ -38,4 +36,3 @@
     </div>
   </div>
 </div>
-
