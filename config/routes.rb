@@ -17,7 +17,11 @@ Rails.application.routes.draw do
 
   # 以下adminのルートパス
   namespace :admin do
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, only: [:index, :show, :edit, :update] do
+      collection do
+        get 'leave' => 'users#leave'
+      end
+    end
   end
 
   namespace :admin do
