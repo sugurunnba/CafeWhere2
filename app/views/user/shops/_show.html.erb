@@ -8,7 +8,7 @@
             <h5 class="text-center" style="color: limegreen"><%= flash[:success] %></h5>
           </tr>
 
-          <h3 class="text-center"><%= @shop.name %>の詳細ページ</h3>
+          <h3 class="text-center"><%= shop.name %>の詳細ページ</h3>
         </thead>
 <br>
         <tbody>
@@ -19,18 +19,18 @@
           </tr>
           <tr>
             <th>店名</th>
-            <td><%= @shop.name %></td>
+            <td><%= shop.name %></td>
           </tr>
           <tr>
             <th>お店の紹介文</th>
-            <td><%= simple_format(@shop.introduction) %></td>
+            <td><%= simple_format(shop.introduction) %></td>
           </tr>
           <tr>
             <th>お店の写真</th>
-            <!--<td><!%= attachment_image_tag @shop, :shop_image, :fill, 300, 300 %></td>-->
+            <!--<td><!%= attachment_image_tag shop, :shop_image, :fill, 300, 300 %></td>-->
             <td>
-            <% if @shop.shop_images.present? %>
-              <% @shop.shop_images.each do |shop_image| %>
+            <% if shop.shop_images.present? %>
+              <% shop.shop_images.each do |shop_image| %>
                 <%= attachment_image_tag shop_image, :shop_image, :fill, 200, 200 %>
               <% end %>
             <% else %>
@@ -41,11 +41,11 @@
           <tr>
             <th>住所</th>
             <td>
-            <% if @shop.latitude.present? && @shop.longitude.present? %>
+            <% if shop.latitude.present? && shop.longitude.present? %>
               <script type="text/javascript">
                 function initMap() {
               // latitude,longitudeから位置を特定
-                  var test ={lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>};
+                  var test ={lat: <%= shop.latitude %>, lng: <%= shop.longitude %>};
                   var map = new google.maps.Map(document.getElementById('map'), {
                             // 表示領域の大きさを指定
                             zoom: 15,
@@ -55,7 +55,7 @@
                   var transitLayer = new google.maps.TransitLayer();
                   transitLayer.setMap(map);
 
-                  var contentString = '住所：<%= @shop.address %>';
+                  var contentString = '住所：<%= shop.address %>';
                   var infowindow = new google.maps.InfoWindow({
                     content: contentString
                   });
@@ -85,7 +85,7 @@
 
               <!--mapの表示-->
               <div id="map" style="margin: 0 auto;"></div>
-              <%= @shop.address %>
+              <%= shop.address %>
             <% else %>
               <p>表示することができません</p>
             <% end %>
@@ -93,47 +93,47 @@
           </tr>
           <tr>
             <th>ジャンル</th>
-            <td><%= @shop.genre.name %></td>
+            <td><%= shop.genre.name %></td>
           </tr>
           <tr>
             <th>営業時間</th>
-             <td><%= @shop.start_business_hours.strftime('%H:%M') %>〜<%= @shop.finish_business_hours.strftime('%H:%M') %></td>
+             <td><%= shop.start_business_hours.strftime('%H:%M') %>〜<%= shop.finish_business_hours.strftime('%H:%M') %></td>
           </tr>
           <tr>
             <th>最寄駅</th>
-            <td><%= @shop.station %></td>
+            <td><%= shop.station %></td>
           </tr>
           <tr>
             <th>電話番号</th>
-            <td><%= @shop.phone_number %></td>
+            <td><%= shop.phone_number %></td>
           </tr>
           <tr>
             <th>ホームページ</th>
             <td>
-              <% if @shop.home_page == "なし" %>
+              <% if shop.home_page == "なし" %>
                 なし
               <% else %>
-                <%= link_to @shop.home_page do %>
-                  <%= @shop.name %>のホームページリンク
+                <%= link_to shop.home_page do %>
+                  <%= shop.name %>のホームページリンク
                 <% end %>
               <% end %>
             </td>
           </tr>
           <tr>
             <th>定休日</th>
-             <td><%= @shop.holiday %></td>
+             <td><%= shop.holiday %></td>
           </tr>
-          <tr id="shop_<%= @shop.id %>">
-          <% if @shop.bookmarked_by?(current_user) %>
-            <td class="bookmark-btn"><i class="fas fa-check"></i><%= link_to "ブックマークを外す", user_shop_bookmarks_path(@shop.id), method: :delete, remote: true, :class => "btn btn-primary" %></td>
+          <tr id="shop_<%= shop.id %>">
+          <% if shop.bookmarked_by?(current_user) %>
+            <td class="bookmark-btn"><i class="fas fa-check"></i><%= link_to "ブックマークを外す", user_shop_bookmarks_path(shop.id), method: :delete, remote: true, :class => "btn btn-primary" %></td>
           <% else %>
-            <td class="bookmark-btn"><i class="fas fa-check-circle fa-fw fa-lg"></i><%= link_to "ブックマーク", user_shop_bookmarks_path(@shop.id), method: :post, remote: true, :class => "btn btn-primary" %></td>
+            <td class="bookmark-btn"><i class="fas fa-check-circle fa-fw fa-lg"></i><%= link_to "ブックマーク", user_shop_bookmarks_path(shop.id), method: :post, remote: true, :class => "btn btn-primary" %></td>
           <% end %>
             <td>
-            <% if @user.reviews.find_by(shop_id: @shop.id) %>
+            <% if user.reviews.find_by(shop_id: shop.id) %>
               評価いただきありがとうございます!
             <% else %>
-              <i class="far fa-thumbs-up fa-fw fa-lg faa-tada animated"></i><%= link_to "評価する", new_user_shop_review_path(@shop.id), :class => "btn btn-primary" %>
+              <i class="far fa-thumbs-up fa-fw fa-lg faa-tada animated"></i><%= link_to "評価する", new_user_shop_review_path(shop.id), :class => "btn btn-primary" %>
             <% end %>
             </td>
           </tr>
@@ -148,14 +148,14 @@
             <h3 class="text-center">クチコミ</h3>
           </tr>
         </thead>
-        <% if @shop.reviews.empty? %>
+        <% if shop.reviews.empty? %>
           <tbody>
             <tr>
               <td>クチコミはありません</td>
             </tr>
           </tbody>
         <% else %>
-          <% @shop.reviews.each do |review| %>
+          <% shop.reviews.each do |review| %>
           <tbody>
             <tr>
               <th>

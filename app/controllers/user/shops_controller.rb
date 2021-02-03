@@ -8,6 +8,7 @@ class User::ShopsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @shop = Shop.new(shop_params)
 
     # time_selectを使うと年月日を登録しないといけないが、このアプリでは年の登録をしていないため、自動的に西暦1年で登録されてしまい、LMTになってしまう。
