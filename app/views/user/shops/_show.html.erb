@@ -123,11 +123,10 @@
             <th>定休日</th>
              <td><%= shop.holiday %></td>
           </tr>
-          <tr id="shop_<%= shop.id %>">
           <% if shop.bookmarked_by?(current_user) %>
-            <td class="bookmark-btn"><i class="fas fa-check"></i><%= link_to "ブックマークを外す", user_shop_bookmarks_path(shop.id), method: :delete, remote: true, :class => "btn btn-primary" %></td>
+            <td><i class="fas fa-check"></i><%= link_to "ブックマークを外す", user_shop_bookmarks_path(shop.id), method: :delete, remote: true, :class => "btn btn-primary" %></td>
           <% else %>
-            <td class="bookmark-btn"><i class="fas fa-check-circle fa-fw fa-lg"></i><%= link_to "ブックマーク", user_shop_bookmarks_path(shop.id), method: :post, remote: true, :class => "btn btn-primary" %></td>
+            <td><i class="fas fa-check-circle fa-fw fa-lg"></i><%= link_to "ブックマーク", user_shop_bookmarks_path(shop.id), method: :post, remote: true, :class => "btn btn-primary" %></td>
           <% end %>
             <td>
             <% if user.reviews.find_by(shop_id: shop.id) %>
@@ -136,7 +135,6 @@
               <i class="far fa-thumbs-up fa-fw fa-lg faa-tada animated"></i><%= link_to "評価する", new_user_shop_review_path(shop.id), :class => "btn btn-primary" %>
             <% end %>
             </td>
-          </tr>
           <tr>
           </tr>
         </tbody>
