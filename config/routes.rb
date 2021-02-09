@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
   root to: 'user/users#top'
 
 
@@ -46,7 +50,7 @@ Rails.application.routes.draw do
 
   # 以下userのルートパス
   namespace :user do
-    resources :users, only: %i(show edit update) do
+    resources :users, only: %i(show edit update destroy) do
       collection do
         get 'top'
         get 'about'
