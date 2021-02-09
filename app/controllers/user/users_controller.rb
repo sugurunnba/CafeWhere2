@@ -43,6 +43,14 @@ class User::UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:success] = "ご利用いただきありがとうございました。ぜひまた遊びに来てください！"
+    redirect_to root_path
+  end
+
+
   private
 
   def user_params

@@ -34,7 +34,9 @@
 
         <div class="actions text-center">
           <%= f.submit "編集を保存する", :class => "btn btn-primary" %>
-          <%= link_to "退会する", quit_user_users_path, :class => "btn btn-primary" %>
+          <% unless @user.name == "ゲストユーザー" %>
+            <%= link_to "退会する", quit_user_users_path, :class => "btn btn-primary" %>
+          <% end %>
         </div>
         <% end %>
       </div>

@@ -4,6 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com', name: "ゲストユーザー", gender: "男性", introduction: "ゲストユーザーです") do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
   # enumがなくても登録できている、必要か分からないためコメントアウトにしている
   enum gender: { "男性": 1, "女性": 2 }
 
