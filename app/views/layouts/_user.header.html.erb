@@ -1,7 +1,9 @@
 <% if user_signed_in? %>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <!-- <a class="navbar-brand" href="#">Fixed navbar</a> -->
-  <a class="navbar-brand" href="#">CafeWhere</a>
+  <%= link_to user_user_path(current_user), class: "nav-link" do %>
+    CafeWhere2
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
