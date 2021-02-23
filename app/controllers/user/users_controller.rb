@@ -3,8 +3,23 @@ class User::UsersController < ApplicationController
 
   def top
     @users = User.all
+    @user = @users.where(user_status: false)
+
     @shops = Shop.all
+    @shop = @shops.where(is_active: 1)
+
     @reviews = Review.all
+    # @review = @reviews.all.select(:shop_id)
+    # レビューをしているお店が掲載許可だった場合のデータだけ取得したい。
+    # @reveiw = Review.all
+    # @reviews = Review.shop_id.where(is_active: "掲載許可")
+    # @reviews = Review.where(shop)
+
+    # @reviews = Review.all.select(:shop_id)
+    # @review = @reviews.where(is_active: "掲載許可")
+
+
+    # @reviews.each {|review| do @reviews.user_id}
   end
 
   def about

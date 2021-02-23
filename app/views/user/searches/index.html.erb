@@ -4,7 +4,7 @@
     <% if !(@shops.nil?) %>
       <!--一致するカフェがなければ下記falseで返す-->
       <% if !(@shops.empty?) %>
-      <table border="1">
+      <table>
         <thead>
           <tr>
             <i class="fa fa-history"></i><%= link_to "地名/ジャンル検索へ戻る", placegenre_user_searches_path %>&nbsp;
@@ -41,7 +41,7 @@
         </tbody>
       </table>
       <% else %>
-      <table border="1" style="border-collapse: collapse">
+      <table>
         <thead>
           <tr>
             <i class="fa fa-history"></i><%= link_to "地名/ジャンル検索へ戻る", placegenre_user_searches_path %>&nbsp;
@@ -56,7 +56,7 @@
       </table>
       <% end %>
     <% else %>
-      <table border="1" style="border-collapse: collapse">
+      <table>
         <thead>
           <tr>
             <i class="fa fa-history"></i><%= link_to "地名/ジャンル検索へ戻る", placegenre_user_searches_path %>&nbsp;
