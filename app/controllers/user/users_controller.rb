@@ -3,23 +3,14 @@ class User::UsersController < ApplicationController
 
   def top
     @users = User.all
-    @user = @users.where(user_status: false)
+    @user = @users.where(user_status: false).count
 
     @shops = Shop.all
-    @shop = @shops.where(is_active: 1)
+    @shop = @shops.where(is_active: 1).count
 
-    @reviews = Review.all
-    # @review = @reviews.all.select(:shop_id)
-    # レビューをしているお店が掲載許可だった場合のデータだけ取得したい。
-    # @reveiw = Review.all
-    # @reviews = Review.shop_id.where(is_active: "掲載許可")
-    # @reviews = Review.where(shop)
+    # 掲載許可したお店の評価数のみ表示
+    @reviews = Review.joins(:shop).where("shops.is_active = 1").count
 
-    # @reviews = Review.all.select(:shop_id)
-    # @review = @reviews.where(is_active: "掲載許可")
-
-
-    # @reviews.each {|review| do @reviews.user_id}
   end
 
   def about
@@ -52,7 +43,7 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = 'ユーザー情報を更新しました'
-      redirect_to user_user_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :edit
     end

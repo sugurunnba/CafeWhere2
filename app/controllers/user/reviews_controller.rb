@@ -13,7 +13,7 @@ class User::ReviewsController < ApplicationController
     @review.user_id = current_user.id
     @review.shop_id = @shop.id
     if @review.save
-      redirect_to user_shop_path(@shop)
+      redirect_to shop_path(@shop)
       flash[:success] = '評価頂きありがとうございます！'
     else
       render :new
@@ -47,14 +47,14 @@ class User::ReviewsController < ApplicationController
     shop = Shop.find(params[:shop_id])
     review = Review.find(params[:id])
     review.update(review_params)
-    redirect_to user_shop_path(shop)
+    redirect_to shop_path(shop)
   end
 
   def destroy
     shop = Shop.find(params[:shop_id])
     review = Review.find(params[:id])
     review.destroy
-    redirect_to user_shop_path(shop)
+    redirect_to shop_path(shop)
   end
 
   def review_params

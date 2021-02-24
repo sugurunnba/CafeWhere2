@@ -10,7 +10,7 @@
         <%= render 'layouts/error_messages', messages: @shop %>
 
         <h3 class="mt-1 mb-3">登録リクエストフォーム</h3>
-        <%= form_with model: @shop, url: user_shops_path, local:true do |f| %>
+        <%= form_with model: @shop, url: shops_path, local:true do |f| %>
 
         <div class="form-group">
           <%= f.label :shop_image, "写真", :class => "form-label" %>&nbsp;<span class="label label-danger">6枚まで選択可能です</span>

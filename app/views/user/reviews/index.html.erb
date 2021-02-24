@@ -18,7 +18,7 @@
 		          <tr>
 		            <th><i class="fas fa-star"></i><%= shop.reviews.average(:rate).to_f.round(1) %></th>
 		            <td>
-	                <%= link_to user_shop_path(shop) do %>
+	                <%= link_to shop_path(shop) do %>
 	                  <%= shop.name %>
 	                <% end %>
 	                </td>

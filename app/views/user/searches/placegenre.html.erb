@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-offset-1 col-md-10">
-      <%= form_with model: @shops, url: user_searches_path, method: :get, local: true do |f| %>
+      <%= form_with model: @shops, url: searches_path, method: :get, local: true do |f| %>
       <table>
 <br>
         <thead>
@@ -14,7 +14,7 @@
 <br>
       	<tbody>
       	  <tr>
-            <i class="fa fa-history"></i><%= link_to "カフェ検索ページへ戻る", user_shops_path %>
+            <i class="fa fa-history"></i><%= link_to "カフェ検索ページへ戻る", shops_path %>
           </tr>
       		<tr>
       			<td rowspan="3">大阪府</td>

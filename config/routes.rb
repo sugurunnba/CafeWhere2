@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   root to: 'user/users#top'
 
 
-
   # 以下adminのルートパス
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update] do
@@ -49,7 +48,7 @@ Rails.application.routes.draw do
 
 
   # 以下userのルートパス
-  namespace :user do
+  scope module: :user do
     resources :users, only: %i(show edit update destroy) do
       collection do
         get 'top'
@@ -60,17 +59,17 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :user do
+  scope module: :user do
     resources :shops, only: [:new, :create, :index, :show] do
       # resourcesだとurlにshop_idを介してしまい、
-      # 全体のランキングページを表示できないので、collection doで別にしている
+      # 全体のランキングページを表示できないので、collection doで別にしています
       collection do
         get 'reviews' => 'reviews#index'
       end
       resources :reviews, only: [:new, :create, :show, :edit, :update, :destroy]
 
       # resourcesだとurlにshop_idを介してしまい、
-      # 特定のユーザーがブックマークしたもののみを表示できないので、collection doで別にしている
+      # 特定のユーザーがブックマークしたもののみを表示できないので、collection doで別にしています
       collection do
         get 'bookmark' => 'bookmarks#show'
       end
@@ -79,7 +78,7 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :user do
+  scope module: :user do
     resources :searches, only: [:index] do
       collection do
         get 'placegenre' => 'searches#placegenre'

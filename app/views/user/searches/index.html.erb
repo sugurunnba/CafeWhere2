@@ -7,8 +7,8 @@
       <table>
         <thead>
           <tr>
-            <i class="fa fa-history"></i><%= link_to "地名/ジャンル検索へ戻る", placegenre_user_searches_path %>&nbsp;
-            <i class="fa fa-history"></i><%= link_to "店名検索へ戻る", user_shops_path %>
+            <i class="fa fa-history"></i><%= link_to "地名/ジャンル検索へ戻る", placegenre_searches_path %>&nbsp;
+            <i class="fa fa-history"></i><%= link_to "店名検索へ戻る", shops_path %>
           </tr>
           <tr>
             <td>カフェ写真</td>
@@ -28,7 +28,7 @@
                 <% else %>
                     <%= image_tag "no_image.jpg", size: "200x200" %>
                 <% end %>&nbsp;&nbsp;
-              <%= link_to "詳細画面へ移動", user_shop_path(shop) %>
+              <%= link_to "詳細画面へ移動", shop_path(shop) %>
             </td>
             <td><%= shop.name %></td>
             <td><%= shop.address %></td>
@@ -44,8 +44,8 @@
       <table>
         <thead>
           <tr>
-            <i class="fa fa-history"></i><%= link_to "地名/ジャンル検索へ戻る", placegenre_user_searches_path %>&nbsp;
-            <i class="fa fa-history"></i><%= link_to "店名検索へ戻る", user_shops_path %>
+            <i class="fa fa-history"></i><%= link_to "地名/ジャンル検索へ戻る", placegenre_searches_path %>&nbsp;
+            <i class="fa fa-history"></i><%= link_to "店名検索へ戻る", shops_path %>
             </tr>
         </thead>
         <tbody>
