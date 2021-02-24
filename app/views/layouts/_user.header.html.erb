@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <!-- <a class="navbar-brand" href="#">Fixed navbar</a> -->
-  <%= link_to user_user_path(current_user), class: "nav-link" do %>
+  <%= link_to user_path(current_user), class: "nav-link" do %>
     CafeWhere2
   <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,15 +11,15 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <!-- <a class="nav-link" href="#">Link</a> -->
-         <%= link_to "お店検索", user_shops_path, class: "nav-link" %>
+         <%= link_to "お店検索", shops_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#">Link</a> -->
-        <%= link_to "ブックマーク", bookmark_user_shops_path, class: "nav-link" %>
+        <%= link_to "ブックマーク", bookmark_shops_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#">Link</a> -->
-        <%= link_to "ランキング", reviews_user_shops_path, class: "nav-link" %>
+        <%= link_to "ランキング", reviews_shops_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#">Link</a> -->
@@ -27,7 +27,7 @@
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#">Link</a> -->
-        <%= link_to "マイページ", user_user_path(current_user), class: "nav-link" %>
+        <%= link_to "マイページ", user_path(current_user), class: "nav-link" %>
       </li>
     </ul>
   </div>
@@ -58,7 +58,7 @@
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" href="#">Link</a> -->
-        <%= link_to "About", about_user_users_path, class: "nav-link", "data-turbolinks": false %>
+        <%= link_to "About", about_users_path, class: "nav-link", "data-turbolinks": false %>
         <!--data-turbolinks追加-->
       </li>
     </ul>

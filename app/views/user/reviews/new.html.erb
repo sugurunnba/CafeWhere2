@@ -4,10 +4,10 @@
 
       <%= render 'layouts/error_messages', messages: @review %>
 
-      <%= form_with model: @review, url: "/user/shops/#{params[:shop_id]}/reviews", local: true do |f| %>
+      <%= form_with model: @review, url: "/shops/#{params[:shop_id]}/reviews", local: true do |f| %>
       <table class="contact-form">
         <tr>
-          <i class="fa fa-history"></i><%= link_to "戻る", user_shop_path(@shop) %>
+          <i class="fa fa-history"></i><%= link_to "戻る", shop_path(@shop) %>
         </tr>
         <tr>
           <th>評価</th>

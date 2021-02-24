@@ -30,11 +30,11 @@
  			<% if @user == current_user %>
 			<table>
 			  <tr>
-			  	<td><%= link_to "カフェ登録リクエスト", new_user_shop_path, :class => "btn btn-primary" %></td>
+			  	<td><%= link_to "カフェ登録リクエスト", new_shop_path, :class => "btn btn-primary" %></td>
 					<td>
 						<% unless @user.name == "ゲストユーザー" %>
 							<% if @user == current_user %>
-								<%= link_to "ユーザー情報を編集する", edit_user_user_path(@user), :class => "btn btn-primary" %>
+								<%= link_to "ユーザー情報を編集する", edit_user_path(@user), :class => "btn btn-primary" %>
 							<% end %>
 						<% else %>
 							<p>
