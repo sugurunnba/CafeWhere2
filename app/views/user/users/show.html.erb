@@ -45,7 +45,7 @@
 					</td>
 			  </tr>
 			  <tr>
-			  	<td></span><%= link_to "お問い合わせする", new_user_contact_path, :class => "btn btn-primary" %></td>
+			  	<td></span><%= link_to "お問い合わせする", new_contact_path, :class => "btn btn-primary" %></td>
 			  	<td>
 			  		<% if @user.name == "ゲストユーザー" %>
 			  			<%= link_to "ログアウト", user_user_path(@user), method: :delete, :class => "btn btn-primary" %>

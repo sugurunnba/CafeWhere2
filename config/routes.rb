@@ -86,11 +86,11 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :user do
+  scope module: :user do
     resources :contacts, only: %i(new create)
   end
 
-  namespace :user do
+  scope module: :user do
     resources :newses, only: %i(index show)
   end
 end
