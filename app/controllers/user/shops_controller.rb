@@ -24,7 +24,7 @@ class User::ShopsController < ApplicationController
     @genres = Genre.all
     if @shop.save
       flash[:success] = "リクエスト頂きありがとうございます！"
-      redirect_to user_user_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :new
     end

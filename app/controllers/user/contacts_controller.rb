@@ -11,7 +11,7 @@ class User::ContactsController < ApplicationController
       # contact_mailer.rbのメソッド(contact_mail(contact))を使用
       ContactMailer.contact_mail(@contact).deliver_later
       flash[:success] = 'お問い合わせ頂きありがとうございます!'
-      redirect_to user_user_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :new
     end
