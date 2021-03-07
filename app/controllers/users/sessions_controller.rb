@@ -38,6 +38,6 @@ class Users::SessionsController < Devise::SessionsController
     user = User.guest
     sign_in user
     flash[:success] = "ゲストユーザーとしてログインしました。"
-    redirect_to user_user_path(user)
+    redirect_to user_path(user)
   end
 end

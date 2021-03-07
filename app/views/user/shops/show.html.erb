@@ -124,16 +124,33 @@
              <td><%= @shop.holiday %></td>
           </tr>
           <tr>
-          <% if @shop.bookmarked_by?(current_user) %>
-            <td><i class="fas fa-check"></i><%= link_to "ブックマークを外す", shop_bookmarks_path(@shop.id), method: :delete, remote: true, :class => "btn btn-primary" %></td>
-          <% else %>
-            <td><i class="fas fa-check-circle fa-fw fa-lg"></i><%= link_to "ブックマーク", shop_bookmarks_path(@shop.id), method: :post, remote: true, :class => "btn btn-primary" %></td>
-          <% end %>
             <td>
-            <% if @user.reviews.find_by(shop_id: @shop.id) %>
-              評価いただきありがとうございます!
+            <% unless @user.name == "ゲストユーザー" %>
+              <% if @shop.bookmarked_by?(current_user) %>
+                <i class="fas fa-check"></i><%= link_to "ブックマークを外す", shop_bookmarks_path(@shop.id), method: :delete, remote: true, :class => "btn btn-primary" %>
+              <% else %>
+                <i class="fas fa-check-circle fa-fw fa-lg"></i><%= link_to "ブックマーク", shop_bookmarks_path(@shop.id), method: :post, remote: true, :class => "btn btn-primary" %>
+              <% end %>
             <% else %>
-              <i class="far fa-thumbs-up fa-fw fa-lg faa-tada animated"></i><%= link_to "評価する", new_shop_review_path(@shop.id), :class => "btn btn-primary" %>
+              <p>
+                ゲストログイン中のため、<br>
+                ブックマークは行えません
+              </p>
+            <% end %>
+            </td>
+
+            <td>
+            <% unless @user.name == "ゲストユーザー" %>
+              <% if @user.reviews.find_by(shop_id: @shop.id) %>
+                評価いただきありがとうございます!
+              <% else %>
+                <i class="far fa-thumbs-up fa-fw fa-lg faa-tada animated"></i><%= link_to "評価する", new_shop_review_path(@shop.id), :class => "btn btn-primary" %>
+              <% end %>
+            <% else %>
+              <p>
+                ゲストログイン中のため、<br>
+                評価は行えません
+              </p>
             <% end %>
             </td>
           </tr>
