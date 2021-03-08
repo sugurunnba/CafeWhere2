@@ -1,6 +1,12 @@
 class User::UsersController < ApplicationController
   before_action :authenticate_user!, except: [:top, :about]
 
+  def registration
+    @user = current_user
+    @user.destroy
+    redirect_to new_user_registration_path
+  end
+
   def top
     @users = User.all
     @user = @users.where(user_status: false).count

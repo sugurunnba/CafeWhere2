@@ -88,10 +88,10 @@ gem 'bootstrap', '~> 4.5'
 # geocoderを使用すると住所の情報を元に緯度、経度を割り出してくれます。
 gem 'geocoder'
 
-# 本番環境の作成
-# group :production do
-#   gem 'mysql2'
-# end
+# 本番環境の作成bundle install --without production
+group :production do
+  gem 'mysql2'
+end
 
 # fontawesome適用のため記載
 gem 'font-awesome-sass', '~> 5.8.1'
