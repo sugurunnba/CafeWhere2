@@ -55,6 +55,7 @@ Rails.application.routes.draw do
         get 'about'
         get 'quit'
         patch 'out'
+        delete 'registration'
       end
     end
   end

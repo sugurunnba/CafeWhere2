@@ -173,7 +173,7 @@
                   <%= review.title %>
                 <% end %>
                 <% if review.user == current_user %>
-                  <%= link_to "編集する", edit_shop_review_path(review) %>
+                  <%= link_to "編集する", edit_shop_review_path(review.shop, review) %>
                   <%= link_to "削除する", shop_review_path(review.shop, review), method: :delete %>
                 <% end %>
               </td>
